@@ -11,8 +11,6 @@ import { HeaderNavComponent } from './features/components/header-nav/header-nav.
   template: `
   <router-outlet id="app">
   <app-header-nav></app-header-nav>
-  <app-home>
-    </app-home>
   </router-outlet>
   `,
 })
