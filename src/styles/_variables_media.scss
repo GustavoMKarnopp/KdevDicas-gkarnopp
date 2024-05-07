@@ -1,0 +1,12 @@
+//@import 'path/to/variables';
+
+// Usando as variáveis em media queries
+//@media (max-width: $breakpoint-xs) {}
+//@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1px) {}
+//@media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg - 1px) {}
+//@media (min-width: $breakpoint-lg) {}
+
+$breakepoints-xs: 600px;
+$breakepoints-sm: 601px;
+$breakepoints-md: 961px;
+$breakepoints-lg: 1265px;

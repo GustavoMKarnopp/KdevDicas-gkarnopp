@@ -3,14 +3,29 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import '../../portfolio-g-karnopp/src/styles/variables_media';
+@import '../../portfolio-g-karnopp/src/styles/variables_colors';
+
 *{
   margin: 0px;
   padding: 0px;
 }
-body{
-  background-color: rgb(17 24 39);
+
+a{
+  cursor: pointer;
 }
 
-.container{
-  height: 90vh;
+body{
+  background-color: $secundary-color-blue-escura;
+}
+
+// .container{
+//   height: 90vh;
+// }
+
+.hove_select{
+  border-bottom: 2px solid $secundary-color-blue-transparent;
+  // background-color: $secundary-color-blue-transparent;
+  padding: 5px;
+  border-radius: 4px;
 }
