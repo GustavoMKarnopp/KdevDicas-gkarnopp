@@ -30,4 +30,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## PROJETO CRIANDO EM ANGULAR 17 COM ESSE COMANDO
 
 `npx -p @angular/cli@17 ng new meu-projeto-angular`
+
 # KdevDicas-gkarnopp
+
+
+# VIDEO EXPLICATIVO DE BUCKET S3 AWS
+
+https://www.youtube.com/watch?v=Dwm1PqEX-8I
+
