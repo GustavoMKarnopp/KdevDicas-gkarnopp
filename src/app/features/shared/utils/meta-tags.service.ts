@@ -14,7 +14,7 @@ export class MetaTagsService {
     });
     this.metaTagService.updateTag({
       name: 'og:description',
-      content: 'Desenvolvedor de software há mais de 3 anos, trabalhei em alguns projetos como o hub de socio do Sport Club Internacional, site Sport Club de Recife, sistemas de venda de ingressos, entre outros projetos como Lading pages, sites de divulgação e projetos particulares.'
+      content: 'Desenvolvedor de software há mais de 3 anos, atuando em projetos como o hub de socio do Sport Club Internacional, site Sport Club de Recife, sistemas de venda de ingressos, entre outros.'
     });
     this.metaTagService.updateTag({
       name: 'og:image',
