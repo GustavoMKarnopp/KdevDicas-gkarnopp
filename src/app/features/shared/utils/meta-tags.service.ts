@@ -36,7 +36,7 @@ export class MetaTagsService {
     // Outras Meta Tags relevantes
     this.metaTagService.updateTag({
       httpEquiv: 'Content-Security-Policy',
-      content: "default-src 'self'; img-src 'self' https://img-front-portolio.s3.us-east-2.amazonaws.com; img-src 'self' https://buck-gifs-portfolio-1.s3.us-east-2.amazonaws.com"
+      content: "default-src 'self'; connect-src 'self' https://pdf-curric-gk-2024.s3.us-east-2.amazonaws.com; img-src 'self' https://img-front-portolio.s3.us-east-2.amazonaws.com; img-src 'self' https://buck-gifs-portfolio-1.s3.us-east-2.amazonaws.com"
     });
     this.metaTagService.updateTag({
       name: 'viewport',
