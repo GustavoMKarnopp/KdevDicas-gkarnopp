@@ -7,7 +7,7 @@ import { MetaTagsService } from '../../shared/utils/meta-tags.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, MetaTagsService],
+  imports: [HttpClientModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
