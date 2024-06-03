@@ -1,18 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { MetaTagsService } from '../../shared/utils/meta-tags.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule, MetaTagsService],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
-  constructor(private api: ApiService){
+  constructor(
+    private api: ApiService,
+    private metaTagsService: MetaTagsService
+  ){
+  }
+  ngOnInit(): void {
+
+    //! Constroi os metatags
+    this.metaTagsService.getMetas();
   }
 
   Download(){
