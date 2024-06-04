@@ -9,9 +9,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(HttpClientModule),
     provideRouter(routes),
     provideAnimationsAsync(),
-    importProvidersFrom(
-    ),
-    provideHttpClient(
-    )
+    importProvidersFrom(),
+    provideHttpClient()
   ]
 }
