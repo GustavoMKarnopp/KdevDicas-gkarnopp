@@ -11,25 +11,37 @@ export class FiltersGlobalsService {
 
   checkImageLoad(imageUrl: string): Promise<boolean> {
     if (isPlatformBrowser(this.platformId)) {
-
       return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => {
-          console.log('Image loaded!');
           resolve(true);
         };
         img.onerror = () => {
-          console.log('Failed to load image');
           reject(false);
         };
         img.src = imageUrl;
         if (img.complete) {
-          console.log('Image already loaded!');
           resolve(true);
         }
       });
     }else{
       return Promise.reject(new Error('Cannot check image load on the server'));
+    }
+  }
+  checkVideoLoad(videoUrl: string): Promise<boolean> {
+    if (isPlatformBrowser(this.platformId)) {
+      return new Promise((resolve, reject) => {
+        const video = document.createElement('video');
+        video.onloadeddata = () => {
+          resolve(true);
+        };
+        video.onerror = () => {
+          reject(false);
+        };
+        video.src = videoUrl;
+      });
+    } else {
+      return Promise.reject(new Error('Cannot check video load on the server'));
     }
   }
 }
