@@ -3,7 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './features/pages/home/home.component';
 import { HeaderNavComponent } from './features/components/header-nav/header-nav.component';
 import { FooterComponent } from './features/components/footer/footer.component';
-import { inject } from "@vercel/analytics"
+import { inject } from "@vercel/analytics";
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 @Component({
   selector: 'app-root',
@@ -27,5 +28,6 @@ export class AppComponent implements OnInit{
   title = 'portfolio-g-karnopp';
   ngOnInit() {
     inject(); // substitua 'UA-XXXXXXXX-X' pelo seu ID de rastreamento do Google Analytics
+    injectSpeedInsights()
   }
 }
