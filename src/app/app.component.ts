@@ -1,8 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './features/pages/home/home.component';
 import { HeaderNavComponent } from './features/components/header-nav/header-nav.component';
 import { FooterComponent } from './features/components/footer/footer.component';
+import { inject } from "@vercel/analytics"
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ import { FooterComponent } from './features/components/footer/footer.component';
     RouterOutlet,
     HomeComponent,
     HeaderNavComponent,
-    FooterComponent
+    FooterComponent,
+
   ],
   template: `
   <router-outlet id="app">
@@ -21,6 +23,9 @@ import { FooterComponent } from './features/components/footer/footer.component';
   <app-footer></app-footer>
   `,
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'portfolio-g-karnopp';
+  ngOnInit() {
+    inject(); // substitua 'UA-XXXXXXXX-X' pelo seu ID de rastreamento do Google Analytics
+  }
 }
