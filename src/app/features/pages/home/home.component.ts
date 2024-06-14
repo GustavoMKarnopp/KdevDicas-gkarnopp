@@ -1,10 +1,11 @@
-  import { Component, OnInit } from '@angular/core';
+  import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
   import { ApiService } from '../../services/api.service';
   import { HttpClientModule } from '@angular/common/http';
   import { CommonModule } from '@angular/common';
   import { MetaTagsService } from '../../shared/utils/meta-tags.service';
   import { FiltersGlobalsService } from '../../shared/utils/filters-globals.service';
   import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+  import { isPlatformBrowser } from '@angular/common';
 
   @Component({
     selector: 'app-home',
@@ -20,18 +21,21 @@
     constructor(
       private api: ApiService,
       private metaTagsService: MetaTagsService,
-      private filtersGlobalsService: FiltersGlobalsService
+      private filtersGlobalsService: FiltersGlobalsService,
+      @Inject(PLATFORM_ID) private platformId: Object
     ) {}
 
     ngOnInit(): void {
-      this.metaTagsService.getMetas();
+      if (isPlatformBrowser(this.platformId)) {
+        this.metaTagsService.getMetas();
 
-      //! Valida se a imagem ja carregou para apresentar se nao persiste o skeleton
-      this.filtersGlobalsService.checkImageLoad(this.imageUrl).then(isLoaded => {
-        this.isImageLoaded = isLoaded;
-      }).catch(error => {
-        console.log(error, 'Error loading image');
-      });
+        //! Valida se a imagem ja carregou para apresentar se nao persiste o skeleton
+        this.filtersGlobalsService.checkImageLoad(this.imageUrl).then(isLoaded => {
+          this.isImageLoaded = isLoaded;
+        }).catch(error => {
+          console.log(error, 'Error loading image');
+        });
+      }
     }
 
     download() {
@@ -45,4 +49,5 @@
         a.remove();
       });
     }
+
   }

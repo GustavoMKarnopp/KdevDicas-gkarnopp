@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { ProjetoAgendamentosComponent } from '../../components/projetos/projeto-agendamentos/projeto-agendamentos.component';
 import { ProjetoDietComponent } from '../../components/projetos/projeto-diet/projeto-diet.component';
 import { FiltersGlobalsService } from '../../shared/utils/filters-globals.service';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-projetos',
   standalone: true,
@@ -16,7 +17,8 @@ export class ProjetosComponent {
   isImageLoadedGif2: boolean  = false;
 
   constructor(
-    private filtersGlobalsService: FiltersGlobalsService
+    private filtersGlobalsService: FiltersGlobalsService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   //! Executa a  validação do tipo de arquivo
@@ -37,32 +39,32 @@ export class ProjetosComponent {
     }
   }
   ngOnInit(): void {
-    if(this.checkFileType(this.imageUrlGif1) === 'video'){
-      //! Valida se o video ja carregou para apresentar se nao persiste o skeleton
-        this.filtersGlobalsService.checkVideoLoad(this.imageUrlGif1).then(isLoaded => {
-          this.isImageLoadedGif1 = isLoaded;
-          this.filtersGlobalsService.checkVideoLoad(this.imageUrlGif2).then(isLoaded => {
-              this.isImageLoadedGif2 = isLoaded;
-            }).catch(error => {
-              console.log(error, 'Error loading image');
+    if (isPlatformBrowser(this.platformId)) {
+      if(this.checkFileType(this.imageUrlGif1) === 'video'){
+        //! Valida se o video ja carregou para apresentar se nao persiste o skeleton
+          this.filtersGlobalsService.checkVideoLoad(this.imageUrlGif1).then(isLoaded => {
+            this.isImageLoadedGif1 = isLoaded;
+            this.filtersGlobalsService.checkVideoLoad(this.imageUrlGif2).then(isLoaded => {
+                this.isImageLoadedGif2 = isLoaded;
+              }).catch(error => {
+                console.log(error, 'Error loading image');
+            });
+          }).catch(error => {
+            console.log(error, 'Error loading image');
           });
-        }).catch(error => {
-          console.log(error, 'Error loading image');
-        });
-    }else{
-      //! Valida se a imagem ja carregou para apresentar se nao persiste o skeleton
-        this.filtersGlobalsService.checkImageLoad(this.imageUrlGif1).then(isLoaded => {
-          this.isImageLoadedGif1 = isLoaded;
-          this.filtersGlobalsService.checkImageLoad(this.imageUrlGif2).then(isLoaded => {
-              this.isImageLoadedGif2 = isLoaded;
-            }).catch(error => {
-              console.log(error, 'Error loading image');
+      }else{
+        //! Valida se a imagem ja carregou para apresentar se nao persiste o skeleton
+          this.filtersGlobalsService.checkImageLoad(this.imageUrlGif1).then(isLoaded => {
+            this.isImageLoadedGif1 = isLoaded;
+            this.filtersGlobalsService.checkImageLoad(this.imageUrlGif2).then(isLoaded => {
+                this.isImageLoadedGif2 = isLoaded;
+              }).catch(error => {
+                console.log(error, 'Error loading image');
+            });
+          }).catch(error => {
+            console.log(error, 'Error loading image');
           });
-        }).catch(error => {
-          console.log(error, 'Error loading image');
-        });
+        }
+      }
     }
-    }
-
-
-}
+  }
