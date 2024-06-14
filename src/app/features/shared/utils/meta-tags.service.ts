@@ -40,7 +40,8 @@ export class MetaTagsService {
       default-src 'self';
       style-src 'self' 'unsafe-inline';
       connect-src 'self' https://pdf-curric-gk-2024.s3.us-east-2.amazonaws.com;
-      img-src 'self' https://img-front-portolio.s3.us-east-2.amazonaws.com https://buck-gifs-portfolio-1.s3.us-east-2.amazonaws.com;
+      img-src 'self' https://img-front-portolio.s3.us-east-2.amazonaws.com https://buck-gifs-portfolio-1.s3.us-east-2.amazonaws.com ;
+      media-src 'self' https://videos-portfolio-gk.s3.us-east-2.amazonaws.com/Gerar+Gif.mp4 https://videos-portfolio-gk.s3.us-east-2.amazonaws.com/Diet+sem+audio.mp4;
       `
     });
     this.metaTagService.updateTag({
